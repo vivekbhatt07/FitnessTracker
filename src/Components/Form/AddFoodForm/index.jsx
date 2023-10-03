@@ -25,17 +25,14 @@ const AddExerciseForm = (props) => {
   };
 
   return (
-    <form
-      className="flex flex-col p-4 gap-6"
-      onSubmit={handleAddExerciseSubmit}
-    >
+    <form className="flex flex-col p-4 gap-6" onSubmit={handleAddFoodSubmit}>
       <div className="flex flex-col gap-4">
         <TextField
           label="Name"
           variant="outlined"
           name="name"
           value={foodFormData.name}
-          onChange={handleAddExercise}
+          onChange={handleAddFood}
           required
         />
         <TextField
@@ -43,7 +40,7 @@ const AddExerciseForm = (props) => {
           variant="outlined"
           name="calories"
           value={foodFormData.calories}
-          onChange={handleAddExercise}
+          onChange={handleAddFood}
           required
         />
         <TextField
@@ -51,7 +48,7 @@ const AddExerciseForm = (props) => {
           variant="outlined"
           name="proteinInGms"
           value={foodFormData.proteinInGms}
-          onChange={handleAddExercise}
+          onChange={handleAddFood}
           required
         />
         <TextField
@@ -59,7 +56,7 @@ const AddExerciseForm = (props) => {
           variant="outlined"
           name="carbsInGms"
           value={foodFormData.carbsInGms}
-          onChange={handleAddExercise}
+          onChange={handleAddFood}
           required
         />
         <TextField
@@ -67,7 +64,7 @@ const AddExerciseForm = (props) => {
           variant="outlined"
           name="fatInGms"
           value={foodFormData.fatInGms}
-          onChange={handleAddExercise}
+          onChange={handleAddFood}
           required
         />
       </div>
@@ -79,7 +76,7 @@ const AddExerciseForm = (props) => {
           variant="outlined"
           onClick={() => {
             closeForm();
-            setTaskFormData({
+            setFoodFormData({
               assignee: "",
               name: "",
               priority: "",

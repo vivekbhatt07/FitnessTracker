@@ -61,7 +61,7 @@ const AddExerciseForm = (props) => {
           variant="outlined"
           onClick={() => {
             closeForm();
-            setTaskFormData({
+            setExerciseFormData({
               assignee: "",
               name: "",
               priority: "",

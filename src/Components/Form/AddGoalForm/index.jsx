@@ -10,63 +10,70 @@ import {
 
 const AddExerciseForm = (props) => {
   const { closeForm, formAction } = props;
-  const [exerciseFormData, setExerciseFormData] = useState({
+  const [goalFormData, setGoalFormData] = useState({
     name: "",
-    duration: "",
-    caloriesBurned: "",
+    description: "",
+    targetDate: "",
+    targetCalories: "",
+    status: "",
   });
 
-  const handleAddExercise = (event) => {
+  const handleAddGoal = (event) => {
     const { name, value } = event.target;
-    setExerciseFormData((prevExerciseFormData) => {
-      return { ...prevExerciseFormData, [name]: value };
+    setGoalFormData((prevGoalFormData) => {
+      return { ...prevGoalFormData, [name]: value };
     });
   };
 
-  const handleAddExerciseSubmit = (event) => {
+  const handleAddGoalSubmit = (event) => {
     event.preventDefault();
     // formAction(exerciseFormData);
     closeForm();
   };
 
   return (
-    <form
-      className="flex flex-col p-4 gap-6"
-      onSubmit={handleAddExerciseSubmit}
-    >
+    <form className="flex flex-col p-4 gap-6" onSubmit={handleAddGoalSubmit}>
       <div className="flex flex-col gap-4">
         <TextField
           label="Name"
           variant="outlined"
           name="assignee"
-          value={exerciseFormData.name}
-          onChange={handleAddExercise}
+          value={goalFormData.name}
+          onChange={handleAddGoal}
           required
         />
         <TextField
-          label="Type"
+          label="Description"
           variant="outlined"
           name="name"
-          value={exerciseFormData.duration}
-          onChange={handleAddExercise}
+          value={goalFormData.description}
+          onChange={handleAddGoal}
           required
         />
         <TextField
-          label="Calories Burnt"
+          label="Target Date"
           variant="outlined"
           name="taskType"
-          value={exerciseFormData.caloriesBurned}
-          onChange={handleAddExercise}
+          value={goalFormData.targetDate}
+          onChange={handleAddGoal}
+          required
+        />
+        <TextField
+          label="Target Calories"
+          variant="outlined"
+          name="taskType"
+          value={goalFormData.targetCalories}
+          onChange={handleAddGoal}
           required
         />
 
-        {/* <FormControl fullWidth required>
-          <InputLabel>Task Status</InputLabel>
+        <FormControl fullWidth required>
+          <InputLabel>Status</InputLabel>
           <Select
-            name="status"
-            value={taskFormData.status}
+            name="Status"
+            value={goalFormData.status}
             label="Task Status"
-            onChange={handleAddTask}
+            onChange={handleAddGoal}
           >
             {StatusList.map((status, statusIndex) => (
               <MenuItem value={status} key={statusIndex}>
@@ -74,7 +81,7 @@ const AddExerciseForm = (props) => {
               </MenuItem>
             ))}
           </Select>
-        </FormControl> */}
+        </FormControl>
       </div>
       <div className="flex gap-3">
         <Button variant="contained" type="submit">
@@ -84,7 +91,7 @@ const AddExerciseForm = (props) => {
           variant="outlined"
           onClick={() => {
             closeForm();
-            setTaskFormData({
+            setGoalFormData({
               assignee: "",
               name: "",
               priority: "",
