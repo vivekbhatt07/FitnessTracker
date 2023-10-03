@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
+import { Button, TextField } from "@mui/material";
 
 const AddExerciseForm = (props) => {
   const { closeForm, formAction } = props;
@@ -38,7 +31,7 @@ const AddExerciseForm = (props) => {
         <TextField
           label="Name"
           variant="outlined"
-          name="assignee"
+          name="name"
           value={exerciseFormData.name}
           onChange={handleAddExercise}
           required
@@ -46,7 +39,7 @@ const AddExerciseForm = (props) => {
         <TextField
           label="Type"
           variant="outlined"
-          name="name"
+          name="duration"
           value={exerciseFormData.duration}
           onChange={handleAddExercise}
           required
@@ -54,27 +47,11 @@ const AddExerciseForm = (props) => {
         <TextField
           label="Calories Burnt"
           variant="outlined"
-          name="taskType"
+          name="caloriesBurned"
           value={exerciseFormData.caloriesBurned}
           onChange={handleAddExercise}
           required
         />
-
-        {/* <FormControl fullWidth required>
-          <InputLabel>Task Status</InputLabel>
-          <Select
-            name="status"
-            value={taskFormData.status}
-            label="Task Status"
-            onChange={handleAddTask}
-          >
-            {StatusList.map((status, statusIndex) => (
-              <MenuItem value={status} key={statusIndex}>
-                {status}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl> */}
       </div>
       <div className="flex gap-3">
         <Button variant="contained" type="submit">
