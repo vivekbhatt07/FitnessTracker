@@ -3,7 +3,15 @@ import { Delete } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 
 const FoodCard = (props) => {
-  const { name, calories, proteinInGms, carbsInGms, fatInGms } = props;
+  const {
+    _id,
+    name,
+    calories,
+    proteinInGms,
+    carbsInGms,
+    fatInGms,
+    cardDeleteAction,
+  } = props;
   return (
     <div className="p-4 border flex flex-col items-center gap-2 min-w-[300px]">
       <p className="flex justify-between w-full">
@@ -21,7 +29,7 @@ const FoodCard = (props) => {
       <p className="flex justify-between w-full">
         <strong>Fat</strong> <span>{fatInGms}g</span>
       </p>
-      <IconButton>
+      <IconButton onClick={() => cardDeleteAction(_id)}>
         <Delete />
       </IconButton>
     </div>

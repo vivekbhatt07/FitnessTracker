@@ -21,7 +21,7 @@ const AddFoodForm = (props) => {
   const handleAddFoodSubmit = (event) => {
     event.preventDefault();
     console.log(foodFormData);
-    // formAction(exerciseFormData);
+    formAction(foodFormData);
     closeForm();
   };
 

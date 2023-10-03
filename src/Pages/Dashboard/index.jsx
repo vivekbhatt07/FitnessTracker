@@ -22,7 +22,7 @@ const Dashboard = () => {
 
   return (
     <PageWrapper>
-      <section className="flex gap-4 mx-auto max-w-[1280px] pt-6 justify-between">
+      <section className="flex gap-4 mx-auto max-w-[1280px] pt-6 justify-between flex-wrap">
         {dashboardData.map((item) => {
           return <PrimaryCard {...item} key={item.id} />;
         })}

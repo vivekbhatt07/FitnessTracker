@@ -29,8 +29,7 @@ const AddGoalForm = (props) => {
 
   const handleAddGoalSubmit = (event) => {
     event.preventDefault();
-    console.log(goalFormData);
-    // formAction(exerciseFormData);
+    formAction(goalFormData);
     closeForm();
   };
 

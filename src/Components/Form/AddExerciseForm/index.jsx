@@ -18,8 +18,7 @@ const AddExerciseForm = (props) => {
 
   const handleAddExerciseSubmit = (event) => {
     event.preventDefault();
-    console.log(exerciseFormData);
-    // formAction(exerciseFormData);
+    formAction(exerciseFormData);
     closeForm();
   };
 
@@ -38,7 +37,7 @@ const AddExerciseForm = (props) => {
           required
         />
         <TextField
-          label="Type"
+          label="Duration"
           variant="outlined"
           name="duration"
           value={exerciseFormData.duration}

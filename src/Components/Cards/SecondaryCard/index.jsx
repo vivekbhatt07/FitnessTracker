@@ -18,7 +18,7 @@ import { truncateString } from "../../../Utils";
 import ModalProvider from "../../ModalProvider";
 
 const SecondaryCard = (props) => {
-  const { name, duration, caloriesBurned } = props;
+  const { _id, name, duration, caloriesBurned, cardDeleteAction } = props;
 
   return (
     <div className="border p-4 min-w-[300px]">
@@ -31,7 +31,7 @@ const SecondaryCard = (props) => {
       <p className="flex justify-between">
         <strong>Calories Burned</strong> <span>{caloriesBurned}</span>
       </p>
-      <IconButton>
+      <IconButton onClick={() => cardDeleteAction(_id)}>
         <Delete />
       </IconButton>
     </div>
