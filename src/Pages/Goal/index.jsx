@@ -12,6 +12,8 @@ import { AddGoalForm } from "../../Components/Form";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import { Edit, Add } from "@mui/icons-material";
+import { goalData } from "../../Data";
+import GoalCard from "../../Components/Cards/GoalCard";
 
 const Goal = () => {
   const { isDarkTheme } = useTheme();
@@ -21,10 +23,10 @@ const Goal = () => {
   const closeGoalModal = () => setIsAddGoalModalOpen(false);
   return (
     <PageWrapper>
-      <section className="flex gap-4 mx-auto max-w-[1280px] pt-6">
+      <section className="flex gap-8 mx-auto max-w-[1280px] pt-6 flex-col">
         <div className="mx-auto">
           <ModalProvider
-            title="ADD FOOD"
+            title="ADD GOAL"
             isOpen={isAddGoalModalOpen}
             closeModal={closeGoalModal}
             OpenModalAction={
@@ -40,6 +42,11 @@ const Goal = () => {
               // formAction={updateTask}
             />
           </ModalProvider>
+        </div>
+        <div className="flex justify-between">
+          {goalData.map((goal) => {
+            return <GoalCard key={goal._id} {...goal} />;
+          })}
         </div>
       </section>
     </PageWrapper>

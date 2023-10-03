@@ -13,13 +13,14 @@ const AddFoodForm = (props) => {
 
   const handleAddFood = (event) => {
     const { name, value } = event.target;
-    setExerciseFormData((prevFoodFormData) => {
+    setFoodFormData((prevFoodFormData) => {
       return { ...prevFoodFormData, [name]: value };
     });
   };
 
   const handleAddFoodSubmit = (event) => {
     event.preventDefault();
+    console.log(foodFormData);
     // formAction(exerciseFormData);
     closeForm();
   };

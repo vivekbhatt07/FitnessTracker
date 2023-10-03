@@ -29,6 +29,7 @@ const AddGoalForm = (props) => {
 
   const handleAddGoalSubmit = (event) => {
     event.preventDefault();
+    console.log(goalFormData);
     // formAction(exerciseFormData);
     closeForm();
   };
@@ -39,7 +40,7 @@ const AddGoalForm = (props) => {
         <TextField
           label="Name"
           variant="outlined"
-          name="assignee"
+          name="name"
           value={goalFormData.name}
           onChange={handleAddGoal}
           required
@@ -47,23 +48,23 @@ const AddGoalForm = (props) => {
         <TextField
           label="Description"
           variant="outlined"
-          name="name"
+          name="description"
           value={goalFormData.description}
           onChange={handleAddGoal}
           required
         />
-        <TextField
+        <input
           label="Target Date"
-          variant="outlined"
-          name="taskType"
+          name="targetDate"
           value={goalFormData.targetDate}
           onChange={handleAddGoal}
           required
+          type="date"
         />
         <TextField
           label="Target Calories"
           variant="outlined"
-          name="taskType"
+          name="targetCalories"
           value={goalFormData.targetCalories}
           onChange={handleAddGoal}
           required
@@ -72,7 +73,7 @@ const AddGoalForm = (props) => {
         <FormControl fullWidth required>
           <InputLabel>Status</InputLabel>
           <Select
-            name="Status"
+            name="status"
             value={goalFormData.status}
             label="Task Status"
             onChange={handleAddGoal}

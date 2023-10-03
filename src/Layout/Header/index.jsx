@@ -11,7 +11,7 @@ const Header = () => {
     >
       <div className="flex justify-between items-center">
         <h1>
-          <Link to="/">Task Sync</Link>
+          <Link to="/">Fitness</Link>
         </h1>
         <button
           className={`mode ${isDarkTheme ? "dark" : "light"}-mode`}

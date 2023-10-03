@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { PageWrapper } from "../../Layout";
 import {
   PrimaryCard,
+  SecondaryCard,
   LightLoader,
   DarkLoader,
   ModalProvider,
@@ -12,6 +13,7 @@ import { AddExerciseForm } from "../../Components/Form";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import { Edit, Add } from "@mui/icons-material";
+import { exerciseData } from "../../Data";
 
 const Exercise = () => {
   const { isDarkTheme } = useTheme();
@@ -22,7 +24,7 @@ const Exercise = () => {
 
   return (
     <PageWrapper>
-      <section className="flex gap-4 mx-auto max-w-[1280px] pt-6">
+      <section className="flex gap-8 mx-auto max-w-[1280px] pt-6 flex-col">
         <div className="mx-auto">
           <ModalProvider
             title="ADD EXERCISE"
@@ -41,6 +43,11 @@ const Exercise = () => {
               // formAction={updateTask}
             />
           </ModalProvider>
+        </div>
+        <div className="flex justify-between">
+          {exerciseData.map((exercise) => {
+            return <SecondaryCard key={exercise._id} {...exercise} />;
+          })}
         </div>
       </section>
     </PageWrapper>

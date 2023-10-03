@@ -18,6 +18,7 @@ const AddExerciseForm = (props) => {
 
   const handleAddExerciseSubmit = (event) => {
     event.preventDefault();
+    console.log(exerciseFormData);
     // formAction(exerciseFormData);
     closeForm();
   };

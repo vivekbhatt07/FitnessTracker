@@ -12,6 +12,8 @@ import { AddFoodForm } from "../../Components/Form";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import { Edit, Add } from "@mui/icons-material";
+import { foodData } from "../../Data";
+import FoodCard from "../../Components/Cards/FoodCard";
 
 const Food = () => {
   const { isDarkTheme } = useTheme();
@@ -21,7 +23,7 @@ const Food = () => {
   const closeFoodModal = () => setIsAddFoodModalOpen(false);
   return (
     <PageWrapper>
-      <section className="flex gap-4 mx-auto max-w-[1280px] pt-6">
+      <section className="flex gap-8 mx-auto max-w-[1280px] pt-6 flex-col">
         <div className="mx-auto">
           <ModalProvider
             title="ADD FOOD"
@@ -40,6 +42,11 @@ const Food = () => {
               // formAction={updateTask}
             />
           </ModalProvider>
+        </div>
+        <div className="flex justify-between">
+          {foodData.map((food) => {
+            return <FoodCard key={food._id} {...food} />;
+          })}
         </div>
       </section>
     </PageWrapper>
