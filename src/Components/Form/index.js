@@ -1,3 +1,5 @@
-import AddUpdateForm from "./AddExerciseForm";
+import AddExerciseForm from "./AddExerciseForm";
+import AddFoodForm from "./AddFoodForm";
+import AddGoalForm from "./AddGoalForm";
 
-export { AddUpdateForm };
+export { AddExerciseForm, AddFoodForm, AddGoalForm };

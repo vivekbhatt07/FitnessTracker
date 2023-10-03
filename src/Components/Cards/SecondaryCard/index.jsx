@@ -16,7 +16,6 @@ import {
 import { IconButton } from "@mui/material";
 import { truncateString } from "../../../Utils";
 import ModalProvider from "../../ModalProvider";
-import { AddUpdateForm } from "../../Form";
 
 const SecondaryCard = (props) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -99,24 +98,6 @@ const SecondaryCard = (props) => {
                     <Delete />
                   </IconButton>
                 </Tooltip>
-                <ModalProvider
-                  title="UPDATE TASK"
-                  isOpen={isEditModalOpen}
-                  closeModal={closeEditModal}
-                  OpenModalAction={
-                    <Tooltip title="Edit">
-                      <IconButton onClick={openEditModal}>
-                        <Edit />
-                      </IconButton>
-                    </Tooltip>
-                  }
-                >
-                  <AddUpdateForm
-                    closeForm={closeEditModal}
-                    formAction={updateTask}
-                    isEdit={props}
-                  />
-                </ModalProvider>
               </div>
             </div>
             <div className="flex justify-between">

@@ -8,7 +8,9 @@ import {
   TextField,
 } from "@mui/material";
 
-const AddExerciseForm = (props) => {
+const statusList = ["in progress", "achieved", "abandoned"];
+
+const AddGoalForm = (props) => {
   const { closeForm, formAction } = props;
   const [goalFormData, setGoalFormData] = useState({
     name: "",
@@ -75,7 +77,7 @@ const AddExerciseForm = (props) => {
             label="Task Status"
             onChange={handleAddGoal}
           >
-            {StatusList.map((status, statusIndex) => (
+            {statusList.map((status, statusIndex) => (
               <MenuItem value={status} key={statusIndex}>
                 {status}
               </MenuItem>
@@ -110,4 +112,4 @@ const AddExerciseForm = (props) => {
   );
 };
 
-export default AddExerciseForm;
+export default AddGoalForm;

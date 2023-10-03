@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
 
-const AddExerciseForm = (props) => {
+const AddFoodForm = (props) => {
   const { closeForm, formAction } = props;
   const [foodFormData, setFoodFormData] = useState({
     name: "",
@@ -95,4 +95,4 @@ const AddExerciseForm = (props) => {
   );
 };
 
-export default AddExerciseForm;
+export default AddFoodForm;
