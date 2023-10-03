@@ -1,3 +1,3 @@
-import AddUpdateForm from "./AddUpdateForm";
+import AddUpdateForm from "./AddExerciseForm";
 
 export { AddUpdateForm };
