@@ -1,4 +1,6 @@
-import Metrics from "./Metrics";
-import Tasks from "./Tasks";
+import Dashboard from "./Dashboard";
+import Exercise from "./Exercise";
+import Food from "./Food";
+import Goal from "./Goal";
 
-export { Metrics, Tasks };
+export { Dashboard, Exercise, Food, Goal };

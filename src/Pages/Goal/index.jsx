@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { PageWrapper } from "../../Layout";
 import { PrimaryCard, LightLoader, DarkLoader } from "../../Components";
-import "./Tasks.css";
+import "./Goal.css";
 import { useTheme } from "../../Context/ThemeContext";
 
-const Tasks = () => {
+const Goal = () => {
   const { isDarkTheme } = useTheme();
 
-  return <PageWrapper>Tasks</PageWrapper>;
+  return <PageWrapper>Goal</PageWrapper>;
 };
 
-export default Tasks;
+export default Goal;
