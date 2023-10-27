@@ -33,7 +33,7 @@ const Exercise = () => {
       const response = await axios.get(
         "https://fitnesstrackapi.vivekbhatt2.repl.co/api/v1/exercises"
       );
-      // console.log(response);
+
       if (response.status === 200) {
         dispatch(setExercises(response.data.exercises));
       }
@@ -51,7 +51,6 @@ const Exercise = () => {
       if (response.status === 201) {
         dispatch(addExercise(response.data.exercise));
       }
-      console.log(response);
     } catch (error) {
       console.error(error);
     }
@@ -76,13 +75,11 @@ const Exercise = () => {
 
   useEffect(() => {
     fetchExercise();
-    addExerciseItem();
-    deleteExerciseItem();
-  }, []);
+  }, [exercises]);
 
   return (
     <PageWrapper>
-      <section className="flex gap-8 mx-auto max-w-[1280px] pt-6 flex-col">
+      <section className="flex gap-8 mx-auto max-w-[1280px] p-6 flex-col">
         <div className="mx-auto">
           <ModalProvider
             title="ADD EXERCISE"
@@ -90,7 +87,15 @@ const Exercise = () => {
             closeModal={closeExerciseModal}
             OpenModalAction={
               <Tooltip title="ADD EXERCISE">
-                <IconButton onClick={openExerciseModal}>
+                <IconButton
+                  onClick={openExerciseModal}
+                  sx={{
+                    background: "#ddd",
+                    "&:hover": {
+                      background: "#ccc",
+                    },
+                  }}
+                >
                   <Add />
                 </IconButton>
               </Tooltip>
@@ -102,7 +107,7 @@ const Exercise = () => {
             />
           </ModalProvider>
         </div>
-        <div className="flex justify-between flex-wrap gap-5">
+        <div className="task_list">
           {exercises.map((exercise) => {
             return (
               <SecondaryCard
@@ -112,6 +117,7 @@ const Exercise = () => {
               />
             );
           })}
+          {exercises.length === 0 && <LightLoader />}
         </div>
       </section>
     </PageWrapper>

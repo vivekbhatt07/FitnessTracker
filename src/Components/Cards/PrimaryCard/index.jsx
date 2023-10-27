@@ -5,7 +5,7 @@ const PrimaryCard = (props) => {
   return (
     <div className="px-4 py-8 border border-[#282828] flex flex-col items-center gap-2 rounded-lg">
       {icon}
-      <div className="text-xl font-bold text-[#101010]">
+      <div className="text-xl font-bold text-[#101010] dark:text-[#ddd]">
         {value ? value : "Loading..."}
       </div>
       <div>{title}</div>
