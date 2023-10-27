@@ -76,6 +76,8 @@ const Exercise = () => {
 
   useEffect(() => {
     fetchExercise();
+    addExerciseItem();
+    deleteExerciseItem();
   }, []);
 
   return (
