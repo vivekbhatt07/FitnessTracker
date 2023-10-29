@@ -42,14 +42,13 @@ const Food = () => {
     }
   };
 
-  const addFoodItem = async (addFood) => {
+  const addFoodItem = async (food) => {
     try {
       const response = await axios.post(
         "https://fitnesstrackapi.vivekbhatt2.repl.co/api/v1/food",
-        addFood
+        food
       );
-
-      if (response.status === 200) {
+      if (response.status === 201) {
         dispatch(addFood(response.data.food));
       }
     } catch (error) {
@@ -57,14 +56,16 @@ const Food = () => {
     }
   };
 
-  const deleteFoodItem = async (foodId) => {
+  const deleteFoodItem = async (foodId, food) => {
+    console.log({ foodId, food });
     try {
       const response = await axios.delete(
-        `https://fitnesstrackapi.vivekbhatt2.repl.co/api/v1/food/${foodId}`
+        `https://fitnesstrackapi.vivekbhatt2.repl.co/api/v1/food/${foodId}`,
+        food
       );
       console.log(response);
       if (response.status === 204) {
-        // dispatch(deleteExercise(response.data.exercise));
+        dispatch(deleteFood(food));
       }
     } catch (error) {
       console.error(error);
@@ -80,7 +81,7 @@ const Food = () => {
 
   return (
     <PageWrapper>
-      <section className="flex gap-8 mx-auto max-w-[1280px] pt-6 flex-col">
+      <section className="flex gap-8 mx-auto max-w-[1280px] pt-6 flex-col px-8 pb-6">
         <div className="mx-auto">
           <ModalProvider
             title="ADD FOOD"
@@ -88,7 +89,15 @@ const Food = () => {
             closeModal={closeFoodModal}
             OpenModalAction={
               <Tooltip title="ADD FOOD">
-                <IconButton onClick={openFoodModal}>
+                <IconButton
+                  onClick={openFoodModal}
+                  sx={{
+                    background: "#ddd",
+                    "&:hover": {
+                      background: "#ccc",
+                    },
+                  }}
+                >
                   <Add />
                 </IconButton>
               </Tooltip>
@@ -97,16 +106,17 @@ const Food = () => {
             <AddFoodForm closeForm={closeFoodModal} formAction={addFoodItem} />
           </ModalProvider>
         </div>
-        <div className="flex justify-between flex-wrap gap-5">
+        <div className="task_list">
           {foods.map((food) => {
             return (
               <FoodCard
                 key={food._id}
-                {...food}
+                foodData={{ ...food }}
                 cardDeleteAction={deleteFoodItem}
               />
             );
           })}
+          {foods.length === 0 && <LightLoader />}
         </div>
       </section>
     </PageWrapper>

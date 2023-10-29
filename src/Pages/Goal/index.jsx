@@ -41,11 +41,11 @@ const Goal = () => {
     }
   };
 
-  const addGoalItem = async (addGoal) => {
+  const addGoalItem = async (goal) => {
     try {
       const response = await axios.post(
         "https://fitnesstrackapi.vivekbhatt2.repl.co/api/v1/goals",
-        addGoal
+        goal
       );
       console.log(response);
       if (response.status === 201) {
@@ -56,14 +56,14 @@ const Goal = () => {
     }
   };
 
-  const deleteGoalItem = async (goalId) => {
+  const deleteGoalItem = async (goalId, goal) => {
     try {
       const response = await axios.delete(
-        `https://fitnesstrackapi.vivekbhatt2.repl.co/api/v1/goals/${goalId}`
+        `https://fitnesstrackapi.vivekbhatt2.repl.co/api/v1/goals/${goalId}`,
+        goal
       );
-      console.log(response);
       if (response.status === 204) {
-        // dispatch(deleteExercise(response.data.exercise));
+        dispatch(deleteGoal(goalId));
       }
     } catch (error) {
       console.error(error);
@@ -79,7 +79,7 @@ const Goal = () => {
 
   return (
     <PageWrapper>
-      <section className="flex gap-8 mx-auto max-w-[1280px] pt-6 flex-col">
+      <section className="flex gap-8 mx-auto max-w-[1280px] p-6 flex-col">
         <div className="mx-auto">
           <ModalProvider
             title="ADD GOAL"
@@ -87,7 +87,15 @@ const Goal = () => {
             closeModal={closeGoalModal}
             OpenModalAction={
               <Tooltip title="ADD GOAL">
-                <IconButton onClick={openGoalModal}>
+                <IconButton
+                  onClick={openGoalModal}
+                  sx={{
+                    background: "#ddd",
+                    "&:hover": {
+                      background: "#ccc",
+                    },
+                  }}
+                >
                   <Add />
                 </IconButton>
               </Tooltip>
@@ -96,16 +104,17 @@ const Goal = () => {
             <AddGoalForm closeForm={closeGoalModal} formAction={addGoalItem} />
           </ModalProvider>
         </div>
-        <div className="flex justify-between flex-wrap gap-5">
+        <div className="task_list">
           {goals.map((goal) => {
             return (
               <GoalCard
                 key={goal._id}
-                {...goal}
+                goalData={{ ...goal }}
                 cardDeleteAction={deleteGoalItem}
               />
             );
           })}
+          {goals.length === 0 && <LightLoader />}
         </div>
       </section>
     </PageWrapper>

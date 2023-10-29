@@ -17,7 +17,7 @@ export const fitnessReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         exercises: state.exercises.filter(
-          (exercise) => exercise._id === payload._id
+          (exercise) => exercise._id !== payload._id
         ),
       };
     case ActionTypes.SET_FOOD:
@@ -27,7 +27,7 @@ export const fitnessReducer = (state = initialState, { type, payload }) => {
     case ActionTypes.DELETE_FOOD:
       return {
         ...state,
-        foods: state.foods.filter((food) => food._id === payload._id),
+        foods: state.foods.filter((food) => food._id !== payload._id),
       };
     case ActionTypes.SET_GOAL:
       return { ...state, goals: payload };
@@ -36,7 +36,7 @@ export const fitnessReducer = (state = initialState, { type, payload }) => {
     case ActionTypes.DELETE_GOAL:
       return {
         ...state,
-        goals: state.goals.filter((goal) => goal._id === payload._id),
+        goals: state.goals.filter((goal) => goal._id !== payload._id),
       };
     default:
       return state;

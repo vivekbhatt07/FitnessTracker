@@ -52,7 +52,7 @@ const Dashboard = () => {
     {
       id: 4,
       icon: <SportsScore sx={{ color: "green" }} />,
-      value: 5170,
+      value: caloriesGoal + caloriesConsumedValue - caloriesBurntValue,
       title: "Remaining Calories to Goal",
     },
   ];

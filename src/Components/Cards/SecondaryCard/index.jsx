@@ -18,26 +18,26 @@ import { truncateString } from "../../../Utils";
 import ModalProvider from "../../ModalProvider";
 
 const SecondaryCard = (props) => {
-  const { _id, name, duration, caloriesBurned, cardDeleteAction } = props;
-
+  const { cardDeleteAction, exerciseData } = props;
   return (
     <div className="border px-4 py-6 rounded-lg">
       <div className="flex flex-col gap-2">
         <p className="flex justify-between">
-          <strong className="text-[#282828]">Name</strong> <span>{name}</span>
+          <strong className="text-[#282828]">Name</strong>{" "}
+          <span>{exerciseData.name}</span>
         </p>
         <p className="flex justify-between">
           <strong className="text-[#282828]">Duration</strong>{" "}
-          <span>{duration}</span>
+          <span>{exerciseData.duration}</span>
         </p>
         <p className="flex justify-between">
           <strong className="text-[#282828]">Calories Burned</strong>{" "}
-          <span>{caloriesBurned}</span>
+          <span>{exerciseData.caloriesBurned}</span>
         </p>
       </div>
       <div className="flex justify-center mt-4">
         <IconButton
-          onClick={() => cardDeleteAction(_id)}
+          onClick={() => cardDeleteAction(exerciseData._id, exerciseData)}
           sx={{
             background: "#ddd",
             "&:hover": {

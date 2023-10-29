@@ -42,11 +42,11 @@ const Exercise = () => {
     }
   };
 
-  const addExerciseItem = async (addExercise) => {
+  const addExerciseItem = async (exercise) => {
     try {
       const response = await axios.post(
         "https://fitnesstrackapi.vivekbhatt2.repl.co/api/v1/exercises",
-        addExercise
+        exercise
       );
       if (response.status === 201) {
         dispatch(addExercise(response.data.exercise));
@@ -56,14 +56,16 @@ const Exercise = () => {
     }
   };
 
-  const deleteExerciseItem = async (exerciseId) => {
+  const deleteExerciseItem = async (exerciseId, exercise) => {
+    console.log(exerciseId, exercise);
     try {
       const response = await axios.delete(
-        `https://fitnesstrackapi.vivekbhatt2.repl.co/api/v1/exercises/${exerciseId}`
+        `https://fitnesstrackapi.vivekbhatt2.repl.co/api/v1/exercises/${exerciseId}`,
+        exercise
       );
-      console.log(response);
       if (response.status === 204) {
-        // dispatch(deleteExercise(response.data.exercise));
+        console.log(response);
+        dispatch(deleteExercise(exercise));
       }
     } catch (error) {
       console.error(error);
@@ -75,7 +77,7 @@ const Exercise = () => {
 
   useEffect(() => {
     fetchExercise();
-  }, [exercises]);
+  }, []);
 
   return (
     <PageWrapper>
@@ -112,7 +114,7 @@ const Exercise = () => {
             return (
               <SecondaryCard
                 key={exercise._id}
-                {...exercise}
+                exerciseData={{ ...exercise }}
                 cardDeleteAction={deleteExerciseItem}
               />
             );
