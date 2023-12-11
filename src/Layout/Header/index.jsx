@@ -13,6 +13,12 @@ const Header = () => {
         <h1>
           <Link to="/">Fitness</Link>
         </h1>
+        <a
+          href="https://github.com/vivekbhatt07/FitnessTracker"
+          target="_blank"
+        >
+          Github Link
+        </a>
         <button
           className={`mode ${isDarkTheme ? "dark" : "light"}-mode`}
           variant="contained"
